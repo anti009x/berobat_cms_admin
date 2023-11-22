@@ -128,6 +128,16 @@ export default {
         console.error('Error fetching gejala data:', error);
       }
     },
+    handleGejalaChecked(item) {
+        if (item.checked && !this.gejalaList.some(gejala => gejala.id === item.id)) {
+            this.gejalaList.push({
+                id: item.id,
+                cf: 0, // Nilai default, bisa diubah oleh pengguna
+                checked: true,
+                nama: item.nama
+            });
+        }
+    },
     async fetchPenyakitData() {
       try {
         const response = await fetch('http://192.168.100.56:8000/api/penyakit');
@@ -148,11 +158,11 @@ export default {
       return ruleData.some((rule) => rule.gejala_id === gejalaId);
     },
     async submitForm() {
-      try {
-        const updatedRules = this.gejalaList.map((item) => ({
-          gejala_id: item.id,
-          value_cf: item.cf,
-        }));
+        try {
+            const updatedRules = this.gejalaList.filter(item => item.checked).map(item => ({
+                gejala_id: item.id,
+                value_cf: item.cf
+            }));
 
         const apiEndpoint = `http://192.168.100.56:8000/api/rule/${this.selectedPenyakitId}/update`;
         const response = await fetch(apiEndpoint, {
