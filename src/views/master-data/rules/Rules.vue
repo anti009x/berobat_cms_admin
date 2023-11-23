@@ -21,7 +21,8 @@
                 <td>
                   <input
                     type="number"
-                    step="0.2"
+                    step="0.1"
+                    min = 0
                     class="form-control form-control-sm"
                     :value="item.cf"
                     @input="updateValueCF(item, $event)"
@@ -148,10 +149,10 @@ export default {
       }
     },
     updateValueCF(item, event) {
-  // Find the index of the gejala in the gejalaList array
+
   const index = this.gejalaList.findIndex((gejala) => gejala.id === item.id);
 
-  // Update the cf value in the gejalaList array
+
   this.gejalaList[index].cf = parseFloat(event.target.value);
 },
     isGejalaChecked(gejalaId, ruleData) {
@@ -182,11 +183,11 @@ export default {
         const responseData = await response.json();
         console.log(responseData);
 
-        // Opsional, Anda dapat menampilkan pesan keberhasilan atau melakukan tindakan lain setelah pengiriman berhasil
+        
         alert('Formulir berhasil dikirimkan!');
       } catch (error) {
         console.error('Error mengirimkan formulir:', error);
-        // Opsional, Anda dapat menampilkan pesan kesalahan atau melakukan tindakan lain jika terjadi kesalahan
+        
         alert('Gagal mengirimkan formulir. Silakan coba lagi.');
       }
     },
