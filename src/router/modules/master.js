@@ -5,6 +5,7 @@ import EditKategoriProduk from '@/views/master-data/obat-produk/EditKategoriProd
 import IndexArtikel from '@/views/master-data/artikel/data-artikel/IndexArtikel.vue'
 
 import Rules from '@/views/master-data/rules/Rules.vue'
+import EditRules from '@/views/master-data/rules/EditRules.vue'
 
 import EditArtikel from '@/views/master-data/artikel/data-artikel/EditArtikel.vue'
 import KategoriArtikel from '@/views/master-data/artikel/kategori-artikel/KategoriArtikel.vue'
@@ -128,6 +129,15 @@ export default [{
             path: '/rules',
             name: 'Rules',
             component: Rules,
+            meta: {
+                middleware: checkRoles(roles.adminDokter)
+            }
+        },
+
+        {
+            path: '/EditRules',
+            name: 'EditRules',
+            component: EditRules,
             meta: {
                 middleware: checkRoles(roles.adminDokter)
             }

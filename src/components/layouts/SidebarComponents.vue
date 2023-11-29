@@ -37,6 +37,8 @@
                     <div  >
                         <h6 class="collapse-header">BASE RULES</h6>
                         <router-link class="collapse-item" to="/rules">Configrusi Gejala</router-link>
+                        <router-link class="collapse-item" to="/EditRules">Edit Data Rules</router-link>
+       
      
                     </div>
 

@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 const permisionsByRole = {
     "RO-2003061": [
         'show_Rules','Rules',
+        'show_EditRules','EditRules',
         'show_Artikel', 'action_Artikel',
         'show_Rumah Sakit', 'action_Admin',
         'show_Dokter',
